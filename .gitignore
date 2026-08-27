@@ -1,0 +1,21 @@
+# Frontend
+node_modules/
+dist/
+.DS_Store
+*.local
+npm-debug.log*
+
+# Backend (Django)
+backend/.env
+__pycache__/
+*.py[cod]
+*.sqlite3
+media/
+staticfiles/
+.venv/
+venv/
+
+# IDE / OS
+.idea/
+.vscode/
+Thumbs.db

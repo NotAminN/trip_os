@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import './base.css';
+@import './components.css';
+@import './widgets.css';
+@import './navbar.css';
+@import './hero.css';
+@import './marketing.css';
+@import './app.css';
+@import './timeline.css';
+@import './map.css';
+@import './weather.css';
+@import './animations.css';

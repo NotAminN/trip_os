@@ -1,0 +1,179 @@
+@layer components {
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .card-hover {
+    transition:
+      box-shadow 0.3s var(--ease-soft),
+      transform 0.3s var(--ease-soft),
+      border-color 0.3s var(--ease-soft);
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-lineblue);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.15s ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background-color: var(--color-sky);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-skystrong);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-deep);
+    border: 1px solid var(--color-lineblue);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-tint);
+    border-color: var(--color-sky);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-slate);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-tint);
+    color: var(--color-deep);
+  }
+
+  .btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1.0625rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .badge-ok {
+    background-color: var(--color-successsoft);
+    color: var(--color-success);
+  }
+
+  .badge-info {
+    background-color: var(--color-infosoft);
+    color: var(--color-deep);
+  }
+
+  .badge-warn {
+    background-color: var(--color-warningsoft);
+    color: var(--color-warning);
+  }
+
+  .badge-danger {
+    background-color: var(--color-dangersoft);
+    color: var(--color-danger);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-lineblue);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-deep);
+  }
+
+  .input {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 0.625rem 0.875rem;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-sky);
+    box-shadow: 0 0 0 3px rgb(77 143 216 / 0.15);
+  }
+
+  .input::placeholder {
+    color: var(--color-faint);
+  }
+
+  .progress {
+    height: 0.5rem;
+    background-color: var(--color-softblue);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-sky), var(--color-deep));
+    border-radius: inherit;
+  }
+
+  .divider {
+    height: 1px;
+    background-color: var(--color-line);
+    border: 0;
+  }
+
+  .check-dot {
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background-color: var(--color-success);
+  }
+}

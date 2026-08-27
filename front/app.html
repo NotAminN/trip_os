@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip OS | داشبورد</title>
+    <meta name="description" content="داشبورد Trip OS؛ مدیریت کامل سفرهایت در یک‌جا." />
+    <meta name="theme-color" content="#F8FBFF" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%234D8FD8'/%3E%3Cpath d='M16 7a6.5 6.5 0 0 0-6.5 6.5c0 4.9 6.5 11.5 6.5 11.5s6.5-6.6 6.5-11.5A6.5 6.5 0 0 0 16 7zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z' fill='white'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#app-view" class="skip-link">پرش به محتوای اصلی</a>
+
+    <div class="flex min-h-screen">
+      <aside data-sidebar class="app-sidebar">
+        <div class="flex h-16 shrink-0 items-center gap-2.5 border-b border-line px-4">
+          <span
+            class="grid size-9 shrink-0 place-items-center rounded-xl bg-linear-to-br from-sky to-deep text-white shadow-sm"
+            aria-hidden="true"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+            </svg>
+          </span>
+          <span class="side-brand-text leading-tight">
+            <b class="block text-sm font-extrabold text-deep">Trip OS</b>
+            <span class="block text-[10px] font-medium text-slate">سامانهٔ سفر تو</span>
+          </span>
+        </div>
+
+        <nav data-side-nav aria-label="ناوبری برنامه" class="flex-1 space-y-1 overflow-y-auto p-3"></nav>
+
+        <div class="shrink-0 border-t border-line p-3">
+          <button type="button" class="nav-item" data-collapse-toggle>
+            <span class="nav-icon" style="rotate: 90deg" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l-5 5 5 5M18 7l-5 5 5 5"/></svg>
+            </span>
+            <span class="side-label">جمع کردن منو</span>
+          </button>
+        </div>
+      </aside>
+
+      <div class="flex min-w-0 flex-1 flex-col">
+        <header data-topbar class="app-topbar">
+          <div class="flex min-w-0 items-center gap-2">
+            <button type="button" class="icon-btn border border-line lg:hidden" data-burger-app aria-label="باز کردن منوی همهٔ بخش‌ها">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div data-trip-switcher class="relative"></div>
+          </div>
+
+          <div class="flex shrink-0 items-center gap-1.5">
+            <button
+              type="button"
+              class="trip-trigger hidden md:flex"
+              data-open-palette
+              data-tooltip="جستجو و دستورات — Ctrl+K"
+              aria-label="جستجو و پالت دستورات"
+            >
+              <span class="text-slate">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+              </span>
+              <span class="hidden text-[13px] text-faint lg:inline">جستجو…</span>
+              <span class="kbd hidden xl:inline-grid">Ctrl K</span>
+            </button>
+
+            <div data-notifications></div>
+
+            <button
+              type="button"
+              class="icon-btn border border-line"
+              data-open-shortcuts
+              data-tooltip="راهنما و میان‌برها"
+              aria-label="راهنما و میان‌برها"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.7 2.7 0 1 1 5.2.9c-.5 1.1-1.6 1.5-2.6 2.3v1.1"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+            </button>
+
+            <div data-profile class="relative"></div>
+          </div>
+        </header>
+
+        <main id="app-view" data-view class="view-enter mx-auto w-full max-w-6xl flex-1 p-4 pb-28 lg:p-8 lg:pb-12"></main>
+      </div>
+    </div>
+
+    <nav data-bottom-nav class="bottom-nav" aria-label="ناوبری موبایل"></nav>
+
+    <script type="module" src="/src/js/app-main.js"></script>
+  </body>
+</html>

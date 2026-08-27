@@ -1,0 +1,56 @@
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes route-flow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes dot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(63 150 115 / 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.anim-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.route-path {
+  stroke-dasharray: 6 10;
+  animation: route-flow 14s linear infinite;
+}
+
+.pulse-dot {
+  animation: dot-pulse 2.4s ease-out infinite;
+}
+
+html.js [data-animate] {
+  opacity: 0;
+}
+
+html.no-motion [data-animate] {
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .route-path,
+  .pulse-dot {
+    animation: none;
+  }
+}

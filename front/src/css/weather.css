@@ -1,0 +1,5 @@
+@layer components {
+  .badge.bg-white\/15 {
+    backdrop-filter: blur(4px);
+  }
+}
