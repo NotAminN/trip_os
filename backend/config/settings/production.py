@@ -20,6 +20,12 @@ if not _raw_secret_key or _raw_secret_key == "change-me-in-production":
 if not ALLOWED_HOSTS:  # noqa: F405
     raise ImproperlyConfigured("ALLOWED_HOSTS must be set in production.")
 
+if os.getenv("VERCEL"):  # noqa: F405
+    # Running on Vercel: additionally trust wildcard subdomains issued by
+    # Vercel (*.vercel.app) alongside any custom domains from ALLOWED_HOSTS.
+    if ".vercel.app" not in ALLOWED_HOSTS:  # noqa: F405
+        ALLOWED_HOSTS.append(".vercel.app")  # noqa: F405
+
 if not DB_NAME:  # noqa: F405
     raise ImproperlyConfigured(
         "PostgreSQL is required in production: set DB_NAME/DB_USER/DB_PASSWORD."
