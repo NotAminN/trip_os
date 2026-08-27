@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+
+  "buildCommand": "cd front && npm install && npm run build",
+
+  "outputDirectory": "front/dist",
+
+  "functions": {
+    "backend/api/index.py": {
+      "runtime": "python3.12"
+    }
+  },
+
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/api/index.py"
+    }
+  ]
+}
