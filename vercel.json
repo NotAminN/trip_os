@@ -4,14 +4,14 @@
   "buildCommand": "cd front && npm install && npm run build",
   "outputDirectory": "front/dist",
   "functions": {
-    "backend/api/index.py": {
-      "includeFiles": "backend/{api,apps,common,config}/**"
+    "api/index.py": {
+      "includeFiles": "backend/**"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/api/index.py"
+      "destination": "/api/index.py"
     }
   ]
 }
