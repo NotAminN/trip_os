@@ -17,7 +17,7 @@ export function createModal({
   const wrap = document.createElement('div')
   wrap.className = 'overlay'
   wrap.innerHTML = `
-    <div class="overlay-backdrop"></div>
+    <div class="overlay-backdrop" data-overlay-backdrop></div>
     <div class="modal-panel modal-${size}" role="dialog" aria-modal="true" aria-labelledby="${titleId}" data-overlay-panel>
       <header class="modal-header">
         <div class="min-w-0">

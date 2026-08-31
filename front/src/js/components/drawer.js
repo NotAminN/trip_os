@@ -16,7 +16,7 @@ export function createDrawer({
   const wrap = document.createElement('div')
   wrap.className = `drawer-overlay drawer-side-${side}`
   wrap.innerHTML = `
-    <div class="overlay-backdrop"></div>
+    <div class="overlay-backdrop" data-overlay-backdrop></div>
     <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="${titleId}" data-overlay-panel>
       <span class="drawer-grabber" aria-hidden="true"></span>
       <header class="modal-header">

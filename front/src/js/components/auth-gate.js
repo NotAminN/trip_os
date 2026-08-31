@@ -80,13 +80,13 @@ function ensureStyles() {
 export function showAuthGate() {
   ensureStyles()
 
-  let gate = document.querySelector('.auth-gate')
-  if (!gate) {
-    gate = document.createElement('div')
-    gate.innerHTML = template()
-    document.body.appendChild(gate.firstElementChild)
+  let root = document.querySelector('.auth-gate')
+  if (!root) {
+    root = document.createElement('div')
+    root.innerHTML = template()
+    document.body.appendChild(root.firstElementChild)
+    root = document.querySelector('.auth-gate')
   }
-  const root = gate
 
   return new Promise((resolve) => {
     const form = root.querySelector('.auth-form')

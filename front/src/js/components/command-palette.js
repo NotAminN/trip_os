@@ -61,7 +61,7 @@ export function initCommandPalette() {
   const wrap = document.createElement('div')
   wrap.className = 'overlay'
   wrap.innerHTML = `
-    <div class="overlay-backdrop"></div>
+    <div class="overlay-backdrop" data-overlay-backdrop></div>
     <div class="modal-panel modal-md" role="dialog" aria-modal="true" aria-label="پالت دستورات" data-overlay-panel style="align-self:flex-start;margin-top:14vh;max-height:72vh">
       <div class="border-b border-line p-3">
         <input
