@@ -17,7 +17,7 @@ const DEFAULTS = {
   sidebarCollapsed: false,
   notificationsRead: false,
   currency: 'IRT',
-  displayName: 'سارا',
+  displayName: '',
   motionReduced: false,
   hideNotifDot: false,
 }

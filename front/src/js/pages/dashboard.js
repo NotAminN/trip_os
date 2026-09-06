@@ -2,10 +2,12 @@ import { tripService } from '../services/trips.js'
 import { getSpentOrFallback } from '../services/budget.js'
 import { packingService } from '../services/packing.js'
 import { getState } from '../state/app-state.js'
+import { authService } from '../services/auth.js'
 import { formatMoney, formatPercent } from '../utils/money.js'
 import { formatTodayJalali } from '../utils/dates.js'
 import { toPersianDigits } from '../utils/formatters.js'
 import { icon } from '../shell/icons.js'
+import { openCreateTripWizard } from '../components/create-trip-wizard.js'
 
 let rerenderBound = false
 
@@ -15,8 +17,45 @@ function chip(text) {
 
 export const meta = { title: 'داشبورد' }
 
+function greetingName() {
+  const user = authService.getUser()
+  const fromState = getState().displayName
+  const fromUser = user?.first_name || user?.full_name || user?.username || ''
+  return fromState && fromState !== 'سارا' ? fromState : fromUser || fromState || 'مسافر'
+}
+
+function renderEmptyDashboard(container) {
+  container.innerHTML = `
+    <header class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h1 class="text-2xl font-extrabold text-deep">سلام، ${greetingName()}</h1>
+        <p class="mt-1 text-sm text-slate">هنوز سفری نساخته‌ای — اولین سفرت را راه بینداز.</p>
+      </div>
+      <span class="chip">${icon('calendar', 14)}${formatTodayJalali()}</span>
+    </header>
+
+    <section class="card mt-8 p-10 text-center" aria-label="بدون سفر">
+      <span class="mx-auto grid size-16 place-items-center rounded-2xl bg-tint text-sky">${icon('compass', 28)}</span>
+      <h2 class="mt-5 text-xl font-extrabold text-deep">سفر فعال نداری.</h2>
+      <p class="mx-auto mt-2 max-w-sm text-sm leading-8 text-slate">
+        با ساخت اولین سفر، تایم‌لاین، نقشه، بودجه و چمدان — همه در همین داشبورد جمع می‌شوند.
+      </p>
+      <button type="button" class="btn btn-primary mx-auto mt-6" data-new-trip>${icon('plus', 16)}ساخت سفر جدید</button>
+    </section>
+  `
+
+  container.querySelector('[data-new-trip]')?.addEventListener('click', () => {
+    openCreateTripWizard({ onCreated: () => render(container) })
+  })
+}
+
 export async function render(container) {
   const trip = tripService.getCurrent()
+  if (!trip) {
+    renderEmptyDashboard(container)
+    bindRerender(container)
+    return
+  }
   const spent = getSpentOrFallback(trip)
   const remaining = Math.max(0, trip.budget.total - spent)
   const spentPercent = Math.round((spent / (trip.budget.total || 1)) * 100)
@@ -26,7 +65,7 @@ export async function render(container) {
   container.innerHTML = `
     <header class="flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h1 class="text-2xl font-extrabold text-deep">سلام، ${getState().displayName || 'مسافر'}</h1>
+        <h1 class="text-2xl font-extrabold text-deep">سلام، ${greetingName()}</h1>
         <p class="mt-1 text-sm text-slate">سفر فعال تو: ${trip.title} — ${trip.destination}</p>
       </div>
       <span class="chip">${icon('calendar', 14)}${formatTodayJalali()}</span>
@@ -145,13 +184,17 @@ export async function render(container) {
     </section>
   `
 
-  if (!rerenderBound) {
-    rerenderBound = true
-    const { subscribe } = await import('../state/app-state.js')
+  if (!rerenderBound) bindRerender(container)
+}
+
+function bindRerender(container) {
+  if (rerenderBound) return
+  rerenderBound = true
+  import('../state/app-state.js').then(({ subscribe }) => {
     subscribe(() => {
       if (container.isConnected && window.location.hash.includes('dashboard')) {
         render(container)
       }
     })
-  }
+  })
 }

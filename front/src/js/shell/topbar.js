@@ -221,14 +221,18 @@ export function initTopbar({ onOpenPalette }) {
     const mount = qs('[data-profile]', topbar)
     if (!mount) return
 
+    const user = authService.getUser()
+    const name = user?.first_name || user?.full_name || user?.username || 'کاربر'
+    const initials = String(name).trim().split(/\s+/).slice(0, 2).map((w) => w.charAt(0)).join('')
+
     const trigger = document.createElement('button')
     trigger.type = 'button'
     trigger.className = 'trip-trigger'
     trigger.innerHTML = `
-      <span class="avatar avatar-sm" aria-hidden="true">سم</span>
+      <span class="avatar avatar-sm" aria-hidden="true">${initials}</span>
       <span class="hidden text-start leading-tight md:block">
-        <span class="block text-sm font-bold text-ink">سارا محمدی</span>
-        <span class="block text-[11px] text-slate">حساب نمایشی</span>
+        <span class="block text-sm font-bold text-ink">${name}</span>
+        <span class="block text-[11px] text-slate">${user?.email || ''}</span>
       </span>
       <span class="text-slate">${CHEVRON}</span>
     `

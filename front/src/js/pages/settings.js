@@ -1,4 +1,5 @@
 import { getState, setState } from '../state/app-state.js'
+import { authService } from '../services/auth.js'
 import { setMotionPreference } from '../animations/gsap.js'
 import { createDropdown } from '../components/dropdown.js'
 import { createToggle } from '../components/toggle.js'
@@ -27,6 +28,8 @@ function collectLocalData() {
 
 export async function render(container) {
   const state = getState()
+  const user = authService.getUser()
+  const defaultName = state.displayName || user?.first_name || user?.full_name || user?.username || ''
 
   container.innerHTML = `
     <header class="flex flex-wrap items-end justify-between gap-3">
@@ -42,7 +45,7 @@ export async function render(container) {
         <h2 class="flex items-center gap-2 text-[15px] font-extrabold text-ink">${icon('compass', 16)}پروفایل</h2>
         <div class="field mt-4">
           <label class="field-label" for="st-name">نام نمایشی</label>
-          <input id="st-name" class="input" type="text" value="${state.displayName}" autocomplete="off" />
+          <input id="st-name" class="input" type="text" value="${defaultName}" autocomplete="off" />
           <p class="field-hint">در سلامِ داشبورد نمایش داده می‌شود.</p>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-4" data-save-name>ذخیرهٔ نام</button>
