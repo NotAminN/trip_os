@@ -271,30 +271,6 @@
         </div>
       </section>
 
-      <section class="container-app pb-20" aria-label="ساعت شهرهای مقصد">
-        <div class="mx-auto max-w-xl text-center">
-          <span class="chip" data-animate="fade-in">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.8"/></svg>
-            ساعت جهانی
-          </span>
-          <h2 data-animate="fade-up" class="mt-4 text-3xl font-extrabold text-deep sm:text-4xl">
-            حالا در مقاصد دنیا چند ساعت است؟
-          </h2>
-          <p data-animate="fade-up" class="mt-3 text-sm leading-8 text-slate sm:text-base">
-            قبل از پرواز، اختلاف ساعت را با مقصدت حس کن؛ ساعت‌ها زنده و بر اساس منطقهٔ زمانی واقعی هر شهر.
-          </p>
-        </div>
-
-        <div
-          data-world-clock
-          class="mt-8 flex gap-4 overflow-x-auto pb-2 no-scrollbar lg:grid lg:grid-cols-5 lg:overflow-visible"
-        ></div>
-
-        <p class="mt-4 text-center text-xs leading-6 text-faint">
-          نمایش روز یا شبِ هر شهر، بر اساس ساعت محلی همان لحظه محاسبه می‌شود.
-        </p>
-      </section>
-
       <section id="preview" class="container-app pb-24 scroll-mt-24" aria-label="نمای زندهٔ سفر در حال اجرا">
         <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -972,10 +948,27 @@
                   <span class="badge badge-info">روز ۱</span>
                   <span class="text-[11px] text-slate">چهارشنبه ۲۴ شهریور</span>
                 </header>
-                <p class="mt-3 flex items-center gap-1.5 text-sm font-bold text-ink">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                  ۲۱° · آفتابی
-                </p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="weather-badge weather-badge-sunny">
+                    <span class="anim-sun" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
+                        <circle cx="12" cy="12" r="4.5" fill="currentColor" class="sun-core" />
+                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round" class="sun-rays">
+                          <line x1="12" y1="1" x2="12" y2="4" />
+                          <line x1="12" y1="20" x2="12" y2="23" />
+                          <line x1="1" y1="12" x2="4" y2="12" />
+                          <line x1="20" y1="12" x2="23" y2="12" />
+                          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+                          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+                          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+                          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+                        </g>
+                      </svg>
+                    </span>
+                    <span>۲۱° · آفتابی</span>
+                  </div>
+                  <span class="text-[11px] text-warning font-semibold">روز ورود و استقرار</span>
+                </div>
                 <ul class="mt-3 space-y-2 text-xs leading-6 text-slate">
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۰۹:۴۰ فرودگاه استانبول</li>
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۱:۳۰ هتل سلطان احمد</li>
@@ -992,10 +985,27 @@
                   <span class="badge badge-info">روز ۲</span>
                   <span class="text-[11px] text-slate">پنج‌شنبه ۲۵ شهریور</span>
                 </header>
-                <p class="mt-3 flex items-center gap-1.5 text-sm font-bold text-ink">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                  ۲۳° · آفتابی
-                </p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="weather-badge weather-badge-sunny">
+                    <span class="anim-sun" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
+                        <circle cx="12" cy="12" r="4.5" fill="currentColor" class="sun-core" />
+                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round" class="sun-rays">
+                          <line x1="12" y1="1" x2="12" y2="4" />
+                          <line x1="12" y1="20" x2="12" y2="23" />
+                          <line x1="1" y1="12" x2="4" y2="12" />
+                          <line x1="20" y1="12" x2="23" y2="12" />
+                          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+                          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+                          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+                          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+                        </g>
+                      </svg>
+                    </span>
+                    <span>۲۳° · آفتابی</span>
+                  </div>
+                  <span class="text-[11px] text-warning font-semibold">هوای عالی گشت شهری</span>
+                </div>
                 <ul class="mt-3 space-y-2 text-xs leading-6 text-slate">
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۰:۰۰ کاخ توپکاپی</li>
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۳:۰۰ ناهار کنار بسفر</li>
@@ -1012,10 +1022,18 @@
                   <span class="badge badge-info">روز ۳</span>
                   <span class="text-[11px] text-slate">جمعه ۲۶ شهریور</span>
                 </header>
-                <p class="mt-3 flex items-center gap-1.5 text-sm font-bold text-ink">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19a5 5 0 1 1 .6-9.97A6.5 6.5 0 0 1 18.4 8.6 4.2 4.2 0 0 1 17.5 19H6z"/></svg>
-                  ۲۲° · کمی ابری
-                </p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="weather-badge weather-badge-cloudy">
+                    <span class="anim-cloudy" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
+                        <circle cx="15" cy="9" r="3.5" fill="var(--color-warning)" class="cloud-sun" />
+                        <path d="M7 18a4 4 0 0 1 0-8 4.5 4.5 0 0 1 8.5-1.5A3.5 3.5 0 0 1 18 14a3 3 0 0 1-2 4H7z" fill="currentColor" opacity="0.9" class="cloud-body" />
+                      </svg>
+                    </span>
+                    <span>۲۲° · کمی ابری</span>
+                  </div>
+                  <span class="text-[11px] text-deep font-semibold">مناسب قایق‌سواری</span>
+                </div>
                 <ul class="mt-3 space-y-2 text-xs leading-6 text-slate">
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۰۹:۳۰ قایق‌سواری بسفر</li>
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۸:۰۰ برج گالاتا</li>
@@ -1032,10 +1050,20 @@
                   <span class="badge badge-warn">روز ۴</span>
                   <span class="text-[11px] text-slate">شنبه ۲۷ شهریور</span>
                 </header>
-                <p class="mt-3 flex items-center gap-1.5 text-sm font-bold text-ink">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19a5 5 0 1 1 .6-9.97A6.5 6.5 0 0 1 18.4 8.6 4.2 4.2 0 0 1 17.5 19H6z"/></svg>
-                  ۱۹° · بارانی سبک
-                </p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="weather-badge weather-badge-rainy">
+                    <span class="anim-rain" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
+                        <path d="M6 14a3.5 3.5 0 0 1 .5-6.96A5 5 0 0 1 16 6a4 4 0 0 1 3 3.9A3.5 3.5 0 0 1 17 14H6z" fill="currentColor" class="rain-cloud" />
+                        <line x1="8" y1="16" x2="7" y2="19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" class="rain-drop-1" />
+                        <line x1="12" y1="16" x2="11" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" class="rain-drop-2" />
+                        <line x1="16" y1="16" x2="15" y2="19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" class="rain-drop-3" />
+                      </svg>
+                    </span>
+                    <span>۱۹° · بارانی سبک</span>
+                  </div>
+                  <span class="text-[11px] text-sky font-semibold">موزه‌های سرپوشیده</span>
+                </div>
                 <ul class="mt-3 space-y-2 text-xs leading-6 text-slate">
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۰:۰۰ موزهٔ هنرهای ترکی</li>
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۵:۰۰ حمام تاریخی</li>
@@ -1052,10 +1080,27 @@
                   <span class="badge badge-ok">روز ۵</span>
                   <span class="text-[11px] text-slate">یک‌شنبه ۲۸ شهریور</span>
                 </header>
-                <p class="mt-3 flex items-center gap-1.5 text-sm font-bold text-ink">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                  ۲۴° · آفتابی
-                </p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="weather-badge weather-badge-sunny">
+                    <span class="anim-sun" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" class="w-full h-full">
+                        <circle cx="12" cy="12" r="4.5" fill="currentColor" class="sun-core" />
+                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round" class="sun-rays">
+                          <line x1="12" y1="1" x2="12" y2="4" />
+                          <line x1="12" y1="20" x2="12" y2="23" />
+                          <line x1="1" y1="12" x2="4" y2="12" />
+                          <line x1="20" y1="12" x2="23" y2="12" />
+                          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+                          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+                          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+                          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+                        </g>
+                      </svg>
+                    </span>
+                    <span>۲۴° · آفتابی</span>
+                  </div>
+                  <span class="text-[11px] text-warning font-semibold">هوای عالی جزایر پرنس</span>
+                </div>
                 <ul class="mt-3 space-y-2 text-xs leading-6 text-slate">
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۰۸:۳۰ پرنس‌جزایر</li>
                   <li class="flex items-center gap-2"><span class="tl-dot"></span>۱۲:۰۰ دوچرخه‌سواری ساحلی</li>
@@ -1203,7 +1248,7 @@
             <li><a href="#features" class="footer-link">امکانات</a></li>
             <li><a href="#how-it-works" class="footer-link">چگونه کار می‌کند؟</a></li>
             <li><a href="#journey" class="footer-link">تایم‌لاین سفر</a></li>
-            <li><a href="#preview" class="footer-link">نمای زندهٔ اجزا</a></li>
+            <li><a href="#preview" class="footer-link">نمای زندهٔ سفر</a></li>
           </ul>
         </nav>
 
@@ -1237,6 +1282,20 @@
         </div>
       </div>
     </footer>
+
+    <!-- FLOATING BACK TO TOP BUTTON -->
+    <button
+      type="button"
+      id="scroll-to-top"
+      data-back-top
+      class="fixed bottom-6 end-6 z-40 flex items-center justify-center h-12 w-12 rounded-full bg-deep text-white shadow-xl border border-white/20 transition-all duration-300 opacity-0 translate-y-6 pointer-events-none hover:bg-sky hover:scale-110 active:scale-95 cursor-pointer group backdrop-blur-md"
+      aria-label="بازگشت به بالای صفحه"
+      data-tooltip="بازگشت به بالا"
+    >
+      <svg class="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
 
     <script type="module" src="/src/js/main.js"></script>
   </body>

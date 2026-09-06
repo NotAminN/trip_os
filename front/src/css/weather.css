@@ -2,4 +2,156 @@
   .badge.bg-white\/15 {
     backdrop-filter: blur(4px);
   }
+
+  /* Weather Animations for Journey Cards */
+  .weather-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .weather-badge:hover {
+    transform: translateY(-1px);
+  }
+
+  .weather-badge-sunny {
+    background-color: var(--color-warningsoft);
+    color: var(--color-warning);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+
+  .weather-badge-cloudy {
+    background-color: var(--color-tint);
+    color: var(--color-deep);
+    border: 1px solid var(--color-lineblue);
+  }
+
+  .weather-badge-rainy {
+    background-color: var(--color-infosoft);
+    color: var(--color-sky);
+    border: 1px solid rgba(77, 143, 216, 0.25);
+  }
+
+  /* Sun Animation */
+  .anim-sun {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .anim-sun .sun-core {
+    transform-origin: center;
+    animation: sun-pulse 3s ease-in-out infinite;
+  }
+
+  .anim-sun .sun-rays {
+    transform-origin: center;
+    animation: sun-spin 12s linear infinite;
+  }
+
+  /* Cloudy Animation */
+  .anim-cloudy {
+    display: inline-block;
+    position: relative;
+    width: 22px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .anim-cloudy .cloud-sun {
+    transform-origin: center;
+    animation: sun-pulse 3s ease-in-out infinite;
+  }
+
+  .anim-cloudy .cloud-body {
+    animation: cloud-float 4s ease-in-out infinite alternate;
+  }
+
+  /* Rainy Animation */
+  .anim-rain {
+    display: inline-block;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+  }
+
+  .anim-rain .rain-cloud {
+    animation: cloud-float 3.5s ease-in-out infinite alternate;
+  }
+
+  .anim-rain .rain-drop-1 {
+    animation: rain-fall 1.2s ease-in infinite;
+  }
+
+  .anim-rain .rain-drop-2 {
+    animation: rain-fall 1.2s ease-in infinite 0.4s;
+  }
+
+  .anim-rain .rain-drop-3 {
+    animation: rain-fall 1.2s ease-in infinite 0.8s;
+  }
+}
+
+@keyframes sun-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sun-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.88;
+  }
+}
+
+@keyframes cloud-float {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  40% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-sun .sun-core,
+  .anim-sun .sun-rays,
+  .anim-cloudy .cloud-sun,
+  .anim-cloudy .cloud-body,
+  .anim-rain .rain-cloud,
+  .anim-rain .rain-drop-1,
+  .anim-rain .rain-drop-2,
+  .anim-rain .rain-drop-3 {
+    animation: none !important;
+  }
 }

@@ -10,9 +10,30 @@ import { getLenis } from './animations/scroll.js'
 import { copyText } from './utils/clipboard.js'
 import { initTooltips } from './components/tooltip.js'
 import { initNavbar } from './components/navbar.js'
-import { initWorldClocks } from './components/world-clock.js'
 import { initLivePreview } from './pages/live-preview.js'
 import { qs } from './utils/helpers.js'
+
+function initScrollToTop() {
+  const btn = document.getElementById('scroll-to-top')
+  if (!btn) return
+
+  let ticking = false
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.scrollY > 300
+        btn.classList.toggle('opacity-0', !scrolled)
+        btn.classList.toggle('translate-y-6', !scrolled)
+        btn.classList.toggle('pointer-events-none', !scrolled)
+        btn.classList.toggle('opacity-100', scrolled)
+        btn.classList.toggle('translate-y-0', scrolled)
+        btn.classList.toggle('pointer-events-auto', scrolled)
+        ticking = false
+      })
+      ticking = true
+    }
+  }, { passive: true })
+}
 
 function boot() {
   const motionReduced = applySavedMotionPreference()
@@ -28,7 +49,7 @@ function boot() {
   initNavbar(qs('[data-navbar]'))
   initMarketing()
   initAccordions()
-  initWorldClocks()
+  initScrollToTop()
   initGlobalActions()
 }
 
