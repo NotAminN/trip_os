@@ -154,9 +154,13 @@ export async function render(container) {
       openExpenseModal({
         dayOptions,
         onSave: (draft) => {
-          budgetService.create({ ...draft, tripId: trip.id })
-          toast.success('هزینه ثبت شد.')
-          rerender()
+          budgetService
+            .create({ ...draft, tripId: trip.id })
+            .then(() => {
+              toast.success('هزینه ثبت شد.')
+              rerender()
+            })
+            .catch(() => {})
         },
       })
     })
@@ -348,9 +352,13 @@ function renderLedger(container, { expenses, dayOptions, dayLabel, money }) {
       expense,
       dayOptions,
       onSave: (draft) => {
-        budgetService.update(expense.id, draft)
-        toast.success('هزینه به‌روزرسانی شد.')
-        render(container)
+        budgetService
+          .update(expense.id, draft)
+          .then(() => {
+            toast.success('هزینه به‌روزرسانی شد.')
+            render(container)
+          })
+          .catch(() => {})
       },
     })
   }
@@ -365,10 +373,14 @@ function renderLedger(container, { expenses, dayOptions, dayLabel, money }) {
         {
           label: 'حذف کن',
           onClick: (api) => {
-            budgetService.remove(expense.id)
+            budgetService
+              .remove(expense.id)
+              .then(() => {
+                toast.success('هزینه حذف شد.')
+                render(container)
+              })
+              .catch(() => {})
             api.requestClose()
-            toast.success('هزینه حذف شد.')
-            render(container)
           },
         },
         { label: 'انصراف', variant: 'btn-ghost', onClick: (api) => api.requestClose() },

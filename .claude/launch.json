@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["manage.py", "runserver", "127.0.0.1:8000", "--settings=config.settings.development"],
+      "cwd": "backend",
+      "port": 8000,
+      "autoPort": true
+    },
+    {
+      "name": "tripos-frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5202", "--strictPort"],
+      "cwd": "front",
+      "port": 5202,
+      "url": "http://localhost:5202/"
+    }
+  ]
+}

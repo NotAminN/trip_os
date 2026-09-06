@@ -197,6 +197,8 @@ export const packingService = {
   },
 
   summaryOrFallback(trip) {
-    return this.summary(trip.id) || trip.packing || { done: 0, total: 0, percent: 0 }
+    return (
+      this.summary(trip.id) || { ...(trip.packing || { done: 0, total: 0 }), percent: 0 }
+    )
   },
 }

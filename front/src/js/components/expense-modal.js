@@ -124,5 +124,6 @@ export function openExpenseModal({
 
   setTimeout(() => titleInput.focus(), 60)
   void getBudgetCategory
+  modal.open()
   return modal
 }

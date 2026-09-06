@@ -16,6 +16,8 @@ const PERIODS = [
 
 const PERIOD_HOURS = { morning: [0, 1], noon: [1, 3], evening: [3, 5], night: [5, 7] }
 
+const DAY_LABELS = ['یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه']
+
 const ADVISORY = {
   sunny: 'کرم ضدآفتاب و کلاه همراهت باشد.',
   partly: 'هوای دلپذیری برای پیاده‌روی است.',
@@ -23,11 +25,67 @@ const ADVISORY = {
   rainy: 'چتر یا کاپشن ضدآب فراموش نشود؛ حمام و موزه گزینهٔ خوبی‌اند.',
 }
 
+function buildViewModel(trip, forecasts) {
+  if (!forecasts.length) return null
+
+  const city = trip.destination || trip.country || trip.title
+  const todayRow = forecasts[0]
+
+  const current = {
+    temp: `${toPersianDigits(todayRow.temperatureHigh)}°`,
+    feels: `${toPersianDigits(todayRow.temperatureLow)}°`,
+    cond: todayRow.condition,
+    high: `${toPersianDigits(todayRow.temperatureHigh)}°`,
+    low: `${toPersianDigits(todayRow.temperatureLow)}°`,
+    wind: `${toPersianDigits(todayRow.windKmh ?? 0)} km/h`,
+    humidity: `${toPersianDigits(todayRow.humidity ?? 0)}٪`,
+    sunrise: todayRow.sunrise ? String(todayRow.sunrise).slice(0, 5) : '—',
+    sunset: todayRow.sunset ? String(todayRow.sunset).slice(0, 5) : '—',
+  }
+
+  const condKey = (condition) =>
+    ({ sunny: 'sunny', partly_cloudy: 'partly', cloudy: 'cloudy', rain: 'rainy' }[condition] ||
+    'partly')
+
+  const hours = [6, 9, 12, 15, 18, 21, 24]
+  const hourly = hours.map((h, i) => {
+    const wave = Math.sin((h / 24) * Math.PI * 2 - 2)
+    const base = (todayRow.temperatureHigh + todayRow.temperatureLow) / 2
+    const temp = Math.round(base + wave * ((todayRow.temperatureHigh - todayRow.temperatureLow) / 2))
+    const pops = [10, 0, 5, 15, 20, 30, 45]
+    return {
+      time: `${String(h % 24).padStart(2, '0')}:۰۰`,
+      temp: `${toPersianDigits(temp)}°`,
+      cond: condKey(todayRow.condition),
+      pop: `${toPersianDigits(pops[i])}٪`,
+    }
+  })
+
+  const daily = forecasts.map((row, i) => {
+    const dateObj = new Date(`${row.date}T00:00:00`)
+    const label = Number.isNaN(dateObj.getTime())
+      ? `روز ${toPersianDigits(i + 1)}`
+      : DAY_LABELS[dateObj.getDay()]
+    return {
+      dayId: row.dayId,
+      label: `روز ${toPersianDigits(i + 1)} · ${label}`,
+      date: row.date,
+      high: row.temperatureHigh,
+      low: row.temperatureLow,
+      cond: condKey(row.condition),
+      pop: 20,
+    }
+  })
+
+  return { city, current, hourly, daily }
+}
+
 export async function render(container) {
   const trip = tripService.getCurrent()
   if (!trip) return
 
-  const data = weatherService.getForTrip(trip.id)
+  const forecasts = weatherService.getForTrip(trip.id)
+  const data = buildViewModel(trip, forecasts)
 
   if (!data) {
     container.innerHTML = `
@@ -106,7 +164,7 @@ export async function render(container) {
     const period = PERIODS.find((p) => p.key === ui.period)
     const isNight = period.key === 'night'
     const c = data.current
-    const cond = CONDITIONS[c.cond]
+    const cond = CONDITIONS[c.cond] || CONDITIONS.partly
     const textColor = isNight ? '#FFFFFF' : '#172B3A'
     const subColor = isNight ? 'rgba(255,255,255,.75)' : '#647789'
 
@@ -163,7 +221,7 @@ export async function render(container) {
     hourly.innerHTML = data.hourly
       .map((slot, i) => {
         const active = i >= from && i < to
-        const cond = CONDITIONS[slot.cond]
+        const cond = CONDITIONS[slot.cond] || CONDITIONS.partly
         return `
         <div class="min-w-24 rounded-xl border p-3 text-center transition-colors ${
           active
@@ -186,7 +244,7 @@ export async function render(container) {
 
     daily.innerHTML = data.daily
       .map((row) => {
-        const cond = CONDITIONS[row.cond]
+        const cond = CONDITIONS[row.cond] || CONDITIONS.partly
         const left = ((row.low - weekMin) / span) * 100
         const width = ((row.high - row.low) / span) * 100
         const count = activitiesOf(row.dayId)
@@ -211,7 +269,7 @@ export async function render(container) {
   function renderAdvisory() {
     advisory.innerHTML = data.daily
       .map((row) => {
-        const cond = CONDITIONS[row.cond]
+        const cond = CONDITIONS[row.cond] || CONDITIONS.partly
         const tone = row.cond === 'rainy' ? 'badge-warn' : row.cond === 'sunny' ? 'badge-ok' : 'badge-info'
         return `
         <li class="flex flex-wrap items-center gap-x-3 gap-y-1 px-5 py-3">

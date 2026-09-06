@@ -58,10 +58,25 @@ export function initTopbar({ onOpenPalette }) {
         setState({ currentTripId: value })
         toast.success(`سفر فعال: «${tripService.getById(value).title}»`)
         // Warm the per-trip caches for the incoming views.
-        void timelineService.ensureLoaded(value)
-        void placeService.ensureLoaded(value)
-        void budgetService.ensureLoaded(value)
-        void packingService.ensureLoaded(value)
+        void Promise.allSettled([
+          timelineService.ensureLoaded(value),
+          placeService.ensureLoaded(value),
+          budgetService.ensureLoaded(value),
+          packingService.ensureLoaded(value),
+        ]).then(() => {
+          const trip = tripService.getById(value)
+          if (!trip) return
+          const days = timelineService.getDays(trip)
+          trip.stats.places = placeService.listByTrip(value).length
+          trip.stats.activities = days.reduce((sum, d) => sum + d.activities.length, 0)
+          const packing = packingService.summary(value)
+          if (packing) trip.packing = { done: packing.done, total: packing.total }
+          if (days.length) {
+            trip.progress = Math.round(
+              days.reduce((sum, d) => sum + d.completion, 0) / days.length,
+            )
+          }
+        })
       },
     })
 

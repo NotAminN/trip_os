@@ -140,5 +140,6 @@ export function openActivityModal({
 
   setTimeout(() => titleInput.focus(), 60)
   void toPersianDigits
+  modal.open()
   return modal
 }

@@ -117,5 +117,6 @@ export function openPlaceModal({
   }
 
   setTimeout(() => nameInput.focus(), 60)
+  modal.open()
   return modal
 }

@@ -91,9 +91,10 @@ export async function render(container) {
     return notes.filter((note) => {
       if (ui.scope !== 'all' && note.scope !== ui.scope) return false
       if (!q) return true
+      const body = note.text ?? note.content ?? ''
       return (
         (note.title || '').includes(q) ||
-        note.body.includes(q) ||
+        body.includes(q) ||
         getNoteScope(note.scope).label.includes(q) ||
         (dayLabel(note.dayId) || '').includes(q) ||
         (placeLabel(note.placeId) || '').includes(q)
@@ -134,7 +135,7 @@ export async function render(container) {
         </div>
 
         ${note.title ? `<b class="mt-2.5 block text-[14px] font-extrabold text-ink">${note.title}</b>` : ''}
-        <p class="mt-1.5 text-[13px] leading-7 text-slate">${note.body}</p>
+        <p class="mt-1.5 text-[13px] leading-7 text-slate">${note.text ?? note.content ?? ''}</p>
 
         ${
           note.pinned

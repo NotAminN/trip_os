@@ -72,7 +72,19 @@ async function renderRoute(key) {
   gsap.fromTo(
     viewContainer,
     { autoAlpha: 0, y: 14 },
-    { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.32,
+      ease: 'power2.out',
+      // If rAF-driven tweens stall (hidden tab), force the view visible.
+      onComplete: () => gsap.set(viewContainer, { clearProps: 'opacity,visibility,transform' }),
+      onStart: () => setTimeout(() => {
+        if (getComputedStyle(viewContainer).visibility === 'hidden') {
+          gsap.set(viewContainer, { clearProps: 'opacity,visibility,transform' })
+        }
+      }, 1200),
+    },
   )
 }
 

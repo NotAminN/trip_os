@@ -1,4 +1,8 @@
 import { tripService } from '../services/trips.js'
+import { timelineService } from '../services/timeline.js'
+import { placeService } from '../services/places.js'
+import { budgetService } from '../services/budget.js'
+import { packingService } from '../services/packing.js'
 import { getState, setState } from '../state/app-state.js'
 import { createTripCard } from '../components/trip-card.js'
 import { openCreateTripWizard } from '../components/create-trip-wizard.js'
@@ -17,7 +21,7 @@ export async function render(container) {
     <header class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h1 class="text-2xl font-extrabold text-deep">سفرهای من</h1>
-        <p class="mt-1 text-sm text-slate">${toPersianDigits(trips.length)} سفر در این مرورگر ذخیره شده است.</p>
+        <p class="mt-1 text-sm text-slate">${toPersianDigits(trips.length)} سفر ثبت شده است.</p>
       </div>
       <button type="button" class="btn btn-primary" data-new-trip>${icon('plus', 16)}ساخت سفر جدید</button>
     </header>
@@ -71,6 +75,14 @@ export async function render(container) {
               if (isCurrent) {
                 const next = tripService.list()[0]
                 setState({ currentTripId: next ? next.id : '' })
+                if (next) {
+                  void Promise.allSettled([
+                    timelineService.ensureLoaded(next.id),
+                    placeService.ensureLoaded(next.id),
+                    budgetService.ensureLoaded(next.id),
+                    packingService.ensureLoaded(next.id),
+                  ])
+                }
               }
               api.requestClose()
               toast.success(`سفر «${targetTrip.title}» حذف شد.`)

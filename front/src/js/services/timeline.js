@@ -18,6 +18,29 @@ function toFa(n) {
   return String(n).replace(/\d/g, (digit) => fa[Number(digit)])
 }
 
+// Frontend place-category keys -> backend activity-category choices.
+const ACTIVITY_CATEGORY_MAP = {
+  attraction: 'sightseeing',
+  sightseeing: 'sightseeing',
+  food: 'food',
+  restaurant: 'food',
+  cafe: 'food',
+  transport: 'transport',
+  shopping: 'shopping',
+  nature: 'relaxation',
+  relaxation: 'relaxation',
+  hotel: 'relaxation',
+  activity: 'adventure',
+  adventure: 'adventure',
+  museum: 'culture',
+  culture: 'culture',
+  other: 'other',
+}
+
+function mapActivityCategory(key) {
+  return ACTIVITY_CATEGORY_MAP[key] || 'other'
+}
+
 export function timeToMinutes(time) {
   const [h, m] = String(time || '0:0').split(':').map(Number)
   return (h || 0) * 60 + (m || 0)
@@ -204,7 +227,7 @@ export const timelineService = {
     const matchedPlace = placeService.findByName(tripId, draft.place)
     const payload = {
       title: draft.title,
-      category: draft.category || 'other',
+      category: mapActivityCategory(draft.category),
       description: draft.notes || '',
       start_time: draft.time ? `${draft.time}:00`.slice(0, 8) : null,
       end_time: null,
@@ -264,7 +287,7 @@ export const timelineService = {
     if ('title' in patch) body.title = patch.title
     if ('description' in patch || 'notes' in patch) body.description = patch.description ?? patch.notes
     if ('time' in patch && patch.time) body.start_time = `${patch.time}:00`.slice(0, 8)
-    if ('category' in patch) body.category = patch.category
+    if ('category' in patch) body.category = mapActivityCategory(patch.category)
     if ('cost' in patch) body.cost = Math.max(0, Number(patch.cost) || 0)
     if ('durationMinutes' in patch) body.duration_minutes = patch.durationMinutes
 

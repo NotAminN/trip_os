@@ -60,7 +60,8 @@ export async function render(container) {
   const remaining = Math.max(0, trip.budget.total - spent)
   const spentPercent = Math.round((spent / (trip.budget.total || 1)) * 100)
   const packing = packingService.summaryOrFallback(trip)
-  const packingPercent = packing.percent
+  const packingPercent = Number(packing.percent) || 0
+  const progress = Math.max(0, Math.min(100, Number(trip.progress) || 0))
 
   container.innerHTML = `
     <header class="flex flex-wrap items-end justify-between gap-3">
@@ -97,10 +98,10 @@ export async function render(container) {
         </div>
         <div class="min-w-52">
           <div class="flex items-center justify-between text-xs text-slate">
-            <span>آمادگی سفر</span><b class="font-extrabold text-deep">${formatPercent(trip.progress)}</b>
+            <span>آمادگی سفر</span><b class="font-extrabold text-deep">${formatPercent(progress)}</b>
           </div>
-          <div class="progress mt-2" role="progressbar" aria-label="آمادگی سفر" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${trip.progress}">
-            <div class="progress-fill" style="width:${trip.progress}%"></div>
+          <div class="progress mt-2" role="progressbar" aria-label="آمادگی سفر" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
+            <div class="progress-fill" style="width:${progress}%"></div>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export function openNoteModal({
 
   const state = {
     title: note?.title || '',
-    body: note?.body || '',
+    body: note?.text ?? note?.content ?? note?.body ?? '',
     scope: note?.scope || defaultScope,
     dayId: note?.dayId || null,
     placeId: note?.placeId || null,
@@ -165,5 +165,6 @@ export function openNoteModal({
 
   syncScopeFields()
   setTimeout(() => (state.body ? textInput.focus() : titleInput.focus()), 60)
+  modal.open()
   return modal
 }

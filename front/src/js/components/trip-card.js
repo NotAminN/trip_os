@@ -41,6 +41,7 @@ export function createTripCard({ trip, onDeleted }) {
   const state = getState()
   const isActive = state.currentTripId === trip.id
   const remaining = trip.budget.total - getSpentOrFallback(trip)
+  const progress = Math.max(0, Math.min(100, Number(trip.progress) || 0))
 
   const el = document.createElement('article')
   el.className = 'card card-hover flex flex-col overflow-hidden'
@@ -81,10 +82,10 @@ export function createTripCard({ trip, onDeleted }) {
       <div class="mt-auto pt-4">
         <div class="flex items-center justify-between text-[11px] text-slate">
           <span>${isActive ? 'سفر فعال' : 'آمادگی'}</span>
-          <b class="text-deep">${formatPercent(trip.progress)}</b>
+          <b class="text-deep">${formatPercent(progress)}</b>
         </div>
-        <div class="progress mt-1.5 h-1.5" role="progressbar" aria-label="${trip.title}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${trip.progress}">
-          <div class="progress-fill" style="width:${trip.progress}%"></div>
+        <div class="progress mt-1.5 h-1.5" role="progressbar" aria-label="${trip.title}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
+          <div class="progress-fill" style="width:${progress}%"></div>
         </div>
       </div>
     </div>

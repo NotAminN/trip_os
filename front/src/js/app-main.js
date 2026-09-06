@@ -67,6 +67,21 @@ async function boot() {
     notificationsService.ensureLoaded(),
   ])
 
+  // Mirror live counts onto the cached trips so cards/progress bars show real data.
+  for (const trip of tripService.list()) {
+    const days = timelineService.getDays(trip)
+    const activities = days.reduce((sum, d) => sum + d.activities.length, 0)
+    trip.stats.places = placeService.listByTrip(trip.id).length
+    trip.stats.activities = activities
+    const packing = packingService.summary(trip.id)
+    if (packing) trip.packing = { done: packing.done, total: packing.total }
+    if (days.length) {
+      trip.progress = days.length
+        ? Math.round(days.reduce((sum, d) => sum + d.completion, 0) / days.length)
+        : 0
+    }
+  }
+
   const palette = initCommandPalette()
   bindPaletteShortcut()
 

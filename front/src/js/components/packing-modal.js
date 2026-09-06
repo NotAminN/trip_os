@@ -86,5 +86,6 @@ export function openPackingModal({
   }
 
   setTimeout(() => nameInput.focus(), 60)
+  modal.open()
   return modal
 }
