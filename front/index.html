@@ -295,137 +295,290 @@
         </p>
       </section>
 
-      <section id="preview" class="container-app pb-24 scroll-mt-24" aria-label="نمایش اجزای رابط کاربری">
+      <section id="preview" class="container-app pb-24 scroll-mt-24" aria-label="نمای زندهٔ سفر در حال اجرا">
         <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-600 border border-emerald-500/20" data-animate="fade-in">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+                زنده • پرواز W5-112
+              </span>
+              <span class="badge badge-info" data-animate="fade-in">سیستم‌عامل زندهٔ سفر</span>
+            </div>
             <h2 data-animate="fade-up" class="text-2xl font-extrabold text-deep sm:text-3xl">
-              کتابخانهٔ رابط کاربری
+              نمای زندهٔ سفر در حال اجرا
             </h2>
-            <p data-animate="fade-up" class="mt-2 text-sm leading-7 text-slate">
-              هر جزء واقعاً کار می‌کند؛ کلیک کن و امتحان کن.
+            <p data-animate="fade-up" class="mt-2 text-sm leading-7 text-slate max-w-xl">
+              از لحظهٔ سوار شدن به هواپیما تا هماهنگی هتل، تفکیک دنگ و برنامه‌های لحظه‌ای؛ همه‌چیز زنده، متصل و در جیب شما.
             </p>
           </div>
-          <span class="badge badge-info" data-animate="fade-in">فاز دوم — سیستم طراحی</span>
+          
+          <div class="flex flex-wrap items-center gap-1.5 rounded-xl border border-line bg-surface p-1.5 shadow-xs" role="tablist" aria-label="تب‌های نمای زنده">
+            <button type="button" class="live-tab-btn is-active" data-live-tab="flight" role="tab" aria-selected="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3.5L3 10.8l6.7 2.4L12 20l2.3-6.8L21 3.5z"/></svg>
+              پرواز و گیت
+            </button>
+            <button type="button" class="live-tab-btn" data-live-tab="agenda" role="tab" aria-selected="false">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              برنامهٔ امروز
+            </button>
+            <button type="button" class="live-tab-btn" data-live-tab="crew" role="tab" aria-selected="false">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              همسفران و دنگ
+            </button>
+          </div>
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <article class="card card-hover p-6" data-animate="fade-up">
-            <h3 class="text-[15px] font-bold text-ink">دکمه‌ها و اعلان‌ها</h3>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <button type="button" class="btn btn-primary" data-demo-action>ثبت تغییرات</button>
-              <button type="button" class="btn btn-secondary" data-demo-drawer-trigger>
-                مشاهدهٔ جزئیات
-              </button>
-              <button type="button" class="btn btn-ghost btn-sm" data-demo-modal-trigger>
-                میان‌برها
-              </button>
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <button type="button" class="chip" data-demo-toast="success">اعلان موفق</button>
-              <button type="button" class="chip" data-demo-toast="info">اعلان اطلاع</button>
-              <button type="button" class="chip" data-demo-toast="warning">هشدار</button>
-              <button type="button" class="chip" data-demo-toast="danger">خطا</button>
-            </div>
-          </article>
+        <div class="live-cockpit-frame p-6 sm:p-8" data-animate="fade-up">
+          <!-- PANEL 1: LIVE FLIGHT & BOARDING PASS -->
+          <div data-live-panel="flight" class="space-y-6">
+            <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] items-center">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate">پرواز شمارهٔ W5-112 • هواپیمایی ماهان</span>
+                    <div class="mt-2 flex items-center gap-3">
+                      <div class="text-right">
+                        <span class="text-2xl font-black text-deep">تهران</span>
+                        <span class="block text-xs text-slate font-medium">IKA فرودگاه امام</span>
+                      </div>
+                      <div class="flex flex-col items-center px-3">
+                        <span class="text-xs font-bold text-sky">۳ ساعت و ۱۵ دقیقه</span>
+                        <div class="relative mt-1 flex items-center w-28">
+                          <div class="h-0.5 w-full bg-lineblue"></div>
+                          <svg class="absolute end-0 text-sky -translate-y-0.5" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3.5L3 10.8l6.7 2.4L12 20l2.3-6.8L21 3.5z"/></svg>
+                        </div>
+                        <span class="mt-1 text-[11px] text-emerald-600 font-semibold">مسیر مستقیم • به‌موقع</span>
+                      </div>
+                      <div class="text-left">
+                        <span class="text-2xl font-black text-deep">استانبول</span>
+                        <span class="block text-xs text-slate font-medium">IST فرودگاه جدید</span>
+                      </div>
+                    </div>
+                  </div>
 
-          <article class="card card-hover p-6" data-animate="fade-up" data-delay="0.06">
-            <h3 class="text-[15px] font-bold text-ink">ورودی‌ها و کلیدهای وضعیت</h3>
-            <div class="field mt-4">
-              <label class="field-label" for="demo-place-name">نام مکان</label>
-              <input
-                id="demo-place-name"
-                class="input"
-                type="text"
-                placeholder="مثلاً موزهٔ آبگینه"
-                autocomplete="off"
-              />
-              <p class="field-hint">نام مکان را فارسی وارد کن.</p>
-            </div>
-            <div class="mt-5 space-y-4">
-              <div data-demo-toggle-budget></div>
-              <div data-demo-toggle-currency></div>
-            </div>
-          </article>
-
-          <article class="card card-hover p-6" data-tabs data-animate="fade-up" data-delay="0.12">
-            <h3 class="mb-4 text-[15px] font-bold text-ink">زبانه‌ها</h3>
-            <div class="tabs" role="tablist" aria-label="نمای سفر">
-              <button type="button" class="tab-btn" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="true">
-                برنامه
-              </button>
-              <button type="button" class="tab-btn" role="tab" id="tab-map" aria-controls="panel-map" aria-selected="false" tabindex="-1">
-                نقشه
-              </button>
-              <button type="button" class="tab-btn" role="tab" id="tab-budget" aria-controls="panel-budget" aria-selected="false" tabindex="-1">
-                بودجه
-              </button>
-            </div>
-            <div
-              id="panel-plan"
-              role="tabpanel"
-              aria-labelledby="tab-plan"
-              class="mt-4 text-sm leading-7 text-slate"
-            >
-              ۳ فعالیت برای امروز ثبت شده است؛ نخستین فعالیت ساعت ۸:۳۰ آغاز می‌شود.
-            </div>
-            <div id="panel-map" role="tabpanel" aria-labelledby="tab-map" hidden class="mt-4 text-sm leading-7 text-slate">
-              ۵ مکان روی مسیر امروز علامت‌گذاری شده است.
-            </div>
-            <div id="panel-budget" role="tabpanel" aria-labelledby="tab-budget" hidden class="mt-4 text-sm leading-7 text-slate">
-              ۶۲٪ بودجهٔ سفر تا امروز مصرف شده است.
-            </div>
-          </article>
-
-          <article class="card card-hover p-6" data-animate="fade-up">
-            <h3 class="text-[15px] font-bold text-ink">منو، راهنما و آواتار</h3>
-            <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
-              <div data-demo-dropdown></div>
-              <button type="button" class="icon-btn border border-line" data-tooltip="مشاهده روی نقشه" aria-label="مشاهده روی نقشه">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" />
-                  <circle cx="12" cy="10" r="2.6" />
-                </svg>
-              </button>
-              <span class="inline-block h-8 w-px bg-line" aria-hidden="true"></span>
-              <div class="flex items-center gap-2" data-demo-avatars></div>
-            </div>
-            <p class="mt-4 text-xs leading-6 text-slate">روی آیکن نقشه نگه دار تا راهنما را ببینی.</p>
-          </article>
-
-          <article class="card card-hover p-6" data-animate="fade-up" data-delay="0.06">
-            <h3 class="text-[15px] font-bold text-ink">تقویم شمسی</h3>
-            <p class="mt-1 text-xs leading-6 text-slate">
-              انتخابگر تاریخ با تبدیل دقیق هجری شمسی؛ با کیبورد هم کار می‌کند.
-            </p>
-            <div class="mt-4" data-demo-datepicker></div>
-            <p class="mt-3 text-xs font-semibold text-deep" data-demo-date-value>
-              هنوز تاریخی انتخاب نشده است.
-            </p>
-          </article>
-
-          <article class="card card-hover p-6" data-animate="fade-up" data-delay="0.12">
-            <h3 class="text-[15px] font-bold text-ink">نشانگر پیشرفت</h3>
-            <div class="mt-5 space-y-5">
-              <div data-demo-progress data-percent="58">
-                <div class="flex items-center justify-between text-xs text-slate">
-                  <span>آمادگی چمدان</span>
-                  <span class="font-bold text-deep" data-progress-label></span>
+                  <!-- GATE COUNTDOWN -->
+                  <div class="rounded-xl border border-lineblue bg-tint p-4 text-center">
+                    <span class="block text-xs font-bold text-slate">زمان باقی‌مانده تا بسته شدن گیت</span>
+                    <div class="mt-2 flex items-center justify-center gap-2" dir="ltr">
+                      <div class="countdown-box">
+                        <span class="digit" data-flight-cd-h>۰۰</span>
+                        <span class="lbl">ساعت</span>
+                      </div>
+                      <span class="text-xl font-black text-deep">:</span>
+                      <div class="countdown-box">
+                        <span class="digit" data-flight-cd-m>۴۲</span>
+                        <span class="lbl">دقیقه</span>
+                      </div>
+                      <span class="text-xl font-black text-deep">:</span>
+                      <div class="countdown-box">
+                        <span class="digit text-warning" data-flight-cd-s>۳۵</span>
+                        <span class="lbl">ثانیه</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="progress mt-2" role="progressbar" aria-label="آمادگی چمدان" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-fill"></div>
+
+                <!-- BOARDING DETAILS GRID -->
+                <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+                  <div class="rounded-lg bg-surface-alt p-3 border border-line">
+                    <span class="block text-xs text-slate">گیت خروجی</span>
+                    <b class="mt-1 block text-lg font-black text-sky">گیت ۲۴</b>
+                  </div>
+                  <div class="rounded-lg bg-surface-alt p-3 border border-line">
+                    <span class="block text-xs text-slate">شماره صندلی</span>
+                    <b class="mt-1 block text-lg font-black text-deep">۱۲A (پنجره)</b>
+                  </div>
+                  <div class="rounded-lg bg-surface-alt p-3 border border-line">
+                    <span class="block text-xs text-slate">کلاس پرواز</span>
+                    <b class="mt-1 block text-sm font-bold text-ink">اکونومی ویژه</b>
+                  </div>
+                  <div class="rounded-lg bg-surface-alt p-3 border border-line">
+                    <span class="block text-xs text-slate">وضعیت چمدان</span>
+                    <b class="mt-1 block text-sm font-bold text-emerald-600">تحویل ۲۴kg ✓</b>
+                  </div>
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div class="mt-6 flex flex-wrap items-center gap-3">
+                  <button type="button" class="btn btn-primary" data-simulate-flight-notif>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    شبیه‌سازی اعلان وضعیت پرواز
+                  </button>
+                  <button type="button" class="btn btn-secondary" data-tooltip="دانلود نسخه آفلاین کارت پرواز">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    کارت پرواز دیجیتال
+                  </button>
                 </div>
               </div>
-              <div data-demo-progress data-percent="72">
-                <div class="flex items-center justify-between text-xs text-slate">
-                  <span>برنامهٔ سفر</span>
-                  <span class="font-bold text-deep" data-progress-label></span>
-                </div>
-                <div class="progress mt-2" role="progressbar" aria-label="برنامهٔ سفر" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-fill"></div>
+
+              <!-- REAL PHOTO AT AIRPORT BOARDING -->
+              <div class="real-photo-card h-64 sm:h-72 shadow-md">
+                <img src="/src/assets/images/traveler-airport-boarding.jpg" alt="مسافر واقعی در سالن فرودگاه کنار پنجره هواپیما" loading="lazy" />
+                <div class="photo-overlay-dark flex flex-col justify-end p-5 text-white">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">سالن ترانزیت بین‌المللی</span>
+                  </div>
+                  <h3 class="mt-1 text-base font-extrabold">آماده برای پرواز به استانبول</h3>
+                  <p class="mt-1 text-xs text-white/80">تمام مدارک و ووچرهای هتل در حالت آفلاین ذخیره شده‌اند.</p>
                 </div>
               </div>
             </div>
-          </article>
+          </div>
+
+          <!-- PANEL 2: TODAY'S LIVE AGENDA IN DESTINATION -->
+          <div data-live-panel="agenda" class="hidden space-y-6">
+            <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] items-center">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-4">
+                  <div>
+                    <span class="badge badge-info">استانبول، ترکیه • شنبه ۲۴ شهریور</span>
+                    <h3 class="mt-2 text-xl font-black text-deep">برنامهٔ روز اول: مرکز تاریخی سلطان‌احمد</h3>
+                  </div>
+                  <div class="flex items-center gap-2 rounded-lg bg-tint px-3 py-1.5 text-xs text-deep font-bold">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    ساعت محلی: ۱۶:۴۵ (۲۲° آفتابی)
+                  </div>
+                </div>
+
+                <div class="mt-5 space-y-3">
+                  <div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-alt border border-emerald-500/30">
+                    <div class="flex items-center gap-3">
+                      <span class="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white text-xs font-bold">✓</span>
+                      <div>
+                        <b class="text-sm text-ink">ناهار در رستوران سنتی کنار بسفر</b>
+                        <span class="block text-xs text-slate">انجام شد ساعت ۱۳:۳۰ • فاکتور ۶۵۰ لیر ثبت گردید</span>
+                      </div>
+                    </div>
+                    <span class="badge badge-success text-xs">تکمیل شد</span>
+                  </div>
+
+                  <div class="flex items-center justify-between p-3.5 rounded-xl bg-surface border-2 border-sky shadow-xs">
+                    <div class="flex items-center gap-3">
+                      <span class="flex h-7 w-7 items-center justify-center rounded-full bg-sky text-white text-xs font-bold animate-pulse">⌛</span>
+                      <div>
+                        <b class="text-sm text-deep">بازدید از کاخ توپکاپی و تالار موزه</b>
+                        <span class="block text-xs text-slate">۱۷:۱۵ تا ۱۹:۳۰ • ۱.۴ کیلومتر (۱۸ دقیقه پیاده‌روی)</span>
+                      </div>
+                    </div>
+                    <span class="badge badge-info text-xs">مکان بعدی</span>
+                  </div>
+
+                  <div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-alt border border-line opacity-75">
+                    <div class="flex items-center gap-3">
+                      <span class="flex h-7 w-7 items-center justify-center rounded-full bg-tint text-slate text-xs font-bold">۳</span>
+                      <div>
+                        <b class="text-sm text-ink">کروز شبانه و تماشای غروب بر فراز بسفر</b>
+                        <span class="block text-xs text-slate">۲۰:۰۰ تا ۲۱:۳۰ • اسکلهٔ امینونو</span>
+                      </div>
+                    </div>
+                    <span class="text-xs text-slate">در انتظار</span>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <button type="button" class="btn btn-primary btn-sm" data-live-route-action>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/></svg>
+                    مسیریابی پیاده تا کاخ توپکاپی
+                  </button>
+                  <button type="button" class="btn btn-ghost btn-sm" data-live-voucher-action>
+                    مشاهدهٔ ووچر و بلیت‌های امروز
+                  </button>
+                </div>
+              </div>
+
+              <!-- REAL PHOTO OF DESTINATION -->
+              <div class="real-photo-card h-64 sm:h-72 shadow-md">
+                <img src="/src/assets/images/istanbul-bosphorus.jpg" alt="عکس واقعی از تنگه بسفر و مساجد استانبول" loading="lazy" />
+                <div class="photo-overlay-dark flex flex-col justify-end p-5 text-white">
+                  <span class="text-xs font-bold text-sky-300">منظرهٔ زندهٔ مقصد</span>
+                  <h4 class="text-base font-extrabold">تنگهٔ بسفر، استانبول</h4>
+                  <p class="mt-1 text-xs text-white/80">هوا کاملاً صاف و مطبوع است؛ بهترین زمان برای بازدید پیاده.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 3: LIVE CREW & SPLIT WALLET -->
+          <div data-live-panel="crew" class="hidden space-y-6">
+            <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] items-center">
+              <div>
+                <div class="flex items-center justify-between border-b border-line pb-4">
+                  <div>
+                    <span class="badge badge-success">اتاق همراهان آنلاین</span>
+                    <h3 class="mt-2 text-xl font-black text-deep">۴ نفر همسفر در این سفر</h3>
+                  </div>
+                  <span class="text-xs text-slate font-medium">همگام‌سازی لحظه‌ای با اینترنت یا بلوتوث محلی</span>
+                </div>
+
+                <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div class="flex items-center gap-3 rounded-xl bg-surface-alt p-3 border border-line">
+                    <img src="/src/assets/images/traveler-avatar-1.jpg" alt="علی رضایی" class="companion-avatar" />
+                    <div>
+                      <b class="block text-xs font-bold text-ink">علی رضایی</b>
+                      <span class="text-[11px] text-emerald-600 font-semibold">آنلاین • سالن پرواز (گیت ۲۴)</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3 rounded-xl bg-surface-alt p-3 border border-line">
+                    <img src="/src/assets/images/traveler-avatar-2.jpg" alt="سارا احمدی" class="companion-avatar" />
+                    <div>
+                      <b class="block text-xs font-bold text-ink">سارا احمدی</b>
+                      <span class="text-[11px] text-emerald-600 font-semibold">آنلاین • تحویل چمدان</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3 rounded-xl bg-surface-alt p-3 border border-line">
+                    <img src="/src/assets/images/traveler-avatar-3.jpg" alt="نوید پارسا" class="companion-avatar" />
+                    <div>
+                      <b class="block text-xs font-bold text-ink">نوید پارسا</b>
+                      <span class="text-[11px] text-emerald-600 font-semibold">آنلاین • کافه تریا</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3 rounded-xl bg-surface-alt p-3 border border-line">
+                    <img src="/src/assets/images/traveler-avatar-4.jpg" alt="نگار توکلی" class="companion-avatar" />
+                    <div>
+                      <b class="block text-xs font-bold text-ink">نگار توکلی</b>
+                      <span class="text-[11px] text-emerald-600 font-semibold">آنلاین • سالن خروج</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LIVE EXPENSE TICKER -->
+                <div class="mt-5 rounded-xl border border-lineblue bg-tint p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <span class="block text-xs font-bold text-slate">صندوق مشترک سفر (کیف پول زنده)</span>
+                      <b class="mt-1 block text-lg font-black text-deep">۴٬۵۰۰ لیر مانده</b>
+                    </div>
+                    <div class="text-left">
+                      <span class="block text-xs text-slate">آخرین تراکنش</span>
+                      <span class="text-xs font-bold text-ink">تاکسی صبیحه (۸۵۰ لیر) توسط نوید</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-5">
+                  <button type="button" class="btn btn-secondary btn-sm" data-live-ping-companion>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/></svg>
+                    ارسال موقعیت مکانی زنده برای همسفران
+                  </button>
+                </div>
+              </div>
+
+              <!-- REAL PHOTO OF FRIENDS TRAVELING -->
+              <div class="real-photo-card h-64 sm:h-72 shadow-md">
+                <img src="/src/assets/images/travelers-friends-cafe.jpg" alt="گروه دوستان واقعی مسافر در حال خنده و صرف نوشیدنی" loading="lazy" />
+                <div class="photo-overlay-dark flex flex-col justify-end p-5 text-white">
+                  <span class="text-xs font-bold text-emerald-300">همسفران Trip OS</span>
+                  <h4 class="text-base font-extrabold">سفرهای گروهی بدون دغدغهٔ دنگ</h4>
+                  <p class="mt-1 text-xs text-white/80">تسویهٔ خودکار هزینه‌ها بر اساس سهم هر فرد در پایان هر روز سفر.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -446,11 +599,27 @@
           <article class="card card-hover flex flex-col p-6 md:col-span-2 lg:row-span-2" data-animate="fade-up">
             <h3 class="bento-title">تمام مسیرت را یک‌جا ببین.</h3>
             <p class="bento-copy max-w-md">
-              تایم‌لاین افقی، ستون فقرات Trip OS است؛ روزها را ببین، جابه‌جا کن و حس کند زمانِ سفر
+              تایم‌لاین افقی، ستون فقرات Trip OS است؛ روزها را ببین، جابه‌جا کن و حس کن زمانِ سفر
               چطور پیش می‌رود.
             </p>
-            <div class="relative mt-auto pt-10">
-              <div class="absolute inset-x-6 top-[3.6rem] h-px bg-lineblue" aria-hidden="true"></div>
+
+            <!-- REAL PHOTO: ROUTE & TRAVELERS -->
+            <div class="real-photo-card mt-5 h-48 w-full shadow-xs">
+              <img src="/src/assets/images/cappadocia-route.jpg" alt="مسیر صخره‌ای و دیدنی کاپادوکیه" loading="lazy" />
+              <div class="photo-overlay-dark flex items-end justify-between p-4 text-white">
+                <div>
+                  <span class="text-[11px] font-bold text-sky-300">مسیر روز سوم تا پنجم</span>
+                  <p class="text-xs font-bold">پیمایش دره و بالن‌های هوای گرم</p>
+                </div>
+                <div class="flex items-center gap-1.5 rounded-full bg-surface/90 px-2.5 py-1 text-[11px] font-bold text-ink backdrop-blur-xs shadow-xs">
+                  <img src="/src/assets/images/traveler-avatar-1.jpg" alt="علی رضایی" class="h-4 w-4 rounded-full object-cover" />
+                  <span>۴ همسفر در مسیر</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-auto pt-6">
+              <div class="absolute inset-x-6 top-[2.6rem] h-px bg-lineblue" aria-hidden="true"></div>
               <div class="flex justify-between">
                 <div class="mini-day"><span class="mini-dot is-now"></span>روز اول</div>
                 <div class="mini-day"><span class="mini-dot is-now"></span>روز دوم</div>
@@ -458,7 +627,7 @@
                 <div class="mini-day"><span class="mini-dot"></span>روز چهارم</div>
                 <div class="mini-day"><span class="mini-dot"></span>روز پنجم</div>
               </div>
-              <div class="mt-8 flex flex-wrap gap-2">
+              <div class="mt-6 flex flex-wrap gap-2">
                 <span class="pill pill-cool">۱۸ مکان</span>
                 <span class="pill pill-cool">۲۳ فعالیت</span>
                 <span class="pill pill-cool">۴۲ کیلومتر</span>
@@ -473,7 +642,23 @@
               هر مکان یک نشان است؛ با انتخاب هر برنامه، نشانش روی نقشه جان می‌گیرد و مسیر کامل
               دیده می‌شود.
             </p>
-            <div class="map-canvas mt-5 flex-1 rounded-xl">
+
+            <!-- REAL PHOTO: ISTANBUL LANDMARKS & TRAVELER -->
+            <div class="real-photo-card mt-5 h-44 w-full shadow-xs">
+              <img src="/src/assets/images/istanbul-bosphorus.jpg" alt="مسیر واقعی گردشگری در استانبول" loading="lazy" />
+              <div class="photo-overlay-dark flex items-end justify-between p-4 text-white">
+                <div class="flex items-center gap-2">
+                  <img src="/src/assets/images/traveler-map-street.jpg" alt="مسافر با نقشه" class="h-8 w-8 rounded-full border-2 border-white object-cover shadow-xs" />
+                  <div>
+                    <p class="text-xs font-bold">گشت پیاده در بافت تاریخی</p>
+                    <p class="text-[11px] text-white/80">فاصله تا مسجد آیا صوفیه: ۶۵۰ متر</p>
+                  </div>
+                </div>
+                <span class="badge badge-info text-[10px]">موقعیت زنده</span>
+              </div>
+            </div>
+
+            <div class="map-canvas mt-4 flex-1 rounded-xl">
               <svg class="map-svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                 <ellipse cx="90" cy="180" rx="70" ry="36" fill="#DCEEFF" opacity="0.8"/>
                 <path d="M0 46 C70 24 130 60 190 48 S310 18 370 44 L400 34 V0 H0 Z" fill="#FFFFFF" opacity="0.5"/>
@@ -505,6 +690,15 @@
                 <li class="legend-row"><span class="legend-dot c-faint"></span>سایر<b class="ms-auto font-bold text-ink"><span data-count="8">۰</span>٪</b></li>
               </ul>
             </div>
+
+            <!-- REAL PHOTO: TRAVELERS DINING & CAFE -->
+            <div class="mt-4 flex items-center gap-3.5 rounded-xl bg-surface-alt p-3 border border-line">
+              <img src="/src/assets/images/traveler-dining.jpg" alt="تجربه کافه و رستوران در سفر" class="h-16 w-20 rounded-lg object-cover shadow-xs" loading="lazy" />
+              <div class="text-xs leading-6 text-slate">
+                <b class="text-ink block font-bold">مدیریت مخارج جمعی</b>
+                تفکیک هزینه‌های رستوران، اقامت و بلیت‌ها به تومان و لیر، همراه با تسویهٔ دنگ همسفران.
+              </div>
+            </div>
           </article>
 
           <article class="card card-hover p-6 md:col-span-2" data-animate="fade-up" data-delay="0.06">
@@ -528,6 +722,15 @@
                 شب<span class="font-extrabold">۱۷°</span>
               </div>
             </div>
+
+            <!-- REAL PHOTO: TRAVELER OVERLOOKING SUNNY VIEW -->
+            <div class="mt-4 flex items-center gap-3.5 rounded-xl bg-surface-alt p-3 border border-line">
+              <img src="/src/assets/images/traveler-backpack-overlook.jpg" alt="هوای مطبوع صبحگاهی در سفر" class="h-16 w-20 rounded-lg object-cover shadow-xs" loading="lazy" />
+              <div class="text-xs leading-6 text-slate">
+                <b class="text-ink block font-bold">هوشمندی بر اساس آب‌وهوا</b>
+                پیشنهاد لباس متناسب و اولویت‌بندی فعالیت‌های فضای باز در ساعت‌های آفتابی روز.
+              </div>
+            </div>
           </article>
 
           <article class="card card-hover p-6" data-animate="fade-up">
@@ -543,6 +746,12 @@
               <div class="progress-fill" style="width: 58%"></div>
             </div>
             <p class="mt-2 text-[11px] text-slate">۷ از ۱۲ مورد آماده</p>
+
+            <!-- REAL PHOTO: TRAVELER PACKING SUITCASE -->
+            <div class="mt-3 flex items-center gap-2.5 border-t border-line pt-3">
+              <img src="/src/assets/images/traveler-packing.jpg" alt="چمدان مسافر" class="h-10 w-12 rounded-lg object-cover shadow-xs" loading="lazy" />
+              <span class="text-[11px] text-slate leading-5">فهرست اختصاصی بر اساس آب‌وهوای مقصد</span>
+            </div>
           </article>
 
           <article class="card card-hover p-6" data-animate="fade-up" data-delay="0.06">
@@ -555,6 +764,15 @@
               <span class="badge badge-info">روز اول</span>
               <span>۲۴ شهریور</span>
             </div>
+
+            <!-- REAL HUMAN TRAVELER NOTE AVATAR -->
+            <div class="mt-3 flex items-center gap-2 border-t border-line pt-3">
+              <img src="/src/assets/images/traveler-avatar-2.jpg" alt="سارا احمدی" class="h-6 w-6 rounded-full object-cover border border-sky" loading="lazy" />
+              <div>
+                <span class="block text-xs font-bold text-ink">سارا احمدی</span>
+                <span class="block text-[10px] text-slate">ووچر هتل و بلیت‌ها ضمیمه شد</span>
+              </div>
+            </div>
           </article>
 
           <article class="card card-hover p-6" data-animate="fade-up" data-delay="0.12">
@@ -565,12 +783,26 @@
               <li class="planner-rail"><span class="planner-time">۱۰:۰۰</span><span class="text-[13px] text-ink">موزهٔ باستان‌شناسی</span></li>
               <li class="planner-rail"><span class="planner-time">۱۹:۳۰</span><span class="text-[13px] text-ink">شام در بی‌اوغلو</span></li>
             </ul>
+
+            <!-- REAL PHOTO: CAFE BREAKFAST IN OLD TOWN -->
+            <div class="mt-3 flex items-center gap-2.5 rounded-lg bg-surface-alt p-2 border border-line">
+              <img src="/src/assets/images/travelers-friends-cafe.jpg" alt="صبحانه و برنامه روزانه" class="h-10 w-12 rounded-md object-cover" loading="lazy" />
+              <div class="text-[11px]">
+                <b class="text-ink block font-bold">هتل پرا پالاس</b>
+                <span class="text-slate">حرکت گروهی ساعت ۰۹:۰۰</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card flex flex-col justify-between rounded-lg bg-linear-to-br from-sky to-deep p-6 text-white shadow-md" data-animate="fade-up" data-delay="0.18">
-            <h3 class="text-lg font-extrabold leading-8">آماده‌ای سفرت را بسازی؟</h3>
-            <p class="mt-2 text-[13px] leading-6 text-white/80">همین حالا اولین روز را طراحی کن.</p>
-            <button type="button" class="btn mt-5 w-fit bg-white text-deep hover:bg-tint" data-nav-target="#preview">
+          <!-- CTA CARD WITH REAL HUMAN TRAVELERS VIEW -->
+          <article class="card relative flex flex-col justify-between overflow-hidden rounded-xl p-6 text-white shadow-md" data-animate="fade-up" data-delay="0.18">
+            <img src="/src/assets/images/travelers-couple-view.jpg" alt="مسافران در افق سفر" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-linear-to-br from-deep/90 via-deep/80 to-sky/70"></div>
+            <div class="relative z-10">
+              <h3 class="text-lg font-extrabold leading-8">آماده‌ای سفرت را بسازی؟</h3>
+              <p class="mt-2 text-[13px] leading-6 text-white/80">همین حالا اولین روز را طراحی کن و با همسفرانت به اشتراک بگذار.</p>
+            </div>
+            <button type="button" class="btn relative z-10 mt-6 w-fit bg-white text-deep hover:bg-tint font-bold shadow-sm" data-nav-target="#preview">
               تجربهٔ زندهٔ Trip OS
             </button>
           </article>
@@ -588,39 +820,98 @@
           </p>
         </div>
 
-        <div class="mt-12 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
           <ol class="space-y-4">
             <li data-step class="step-card" data-animate="fade-up">
               <span class="step-num">۰۱</span>
-              <div>
+              <div class="flex-1">
                 <h3 class="text-[15px] font-extrabold text-ink">مقصد را انتخاب کن</h3>
-                <p class="mt-1 text-[13px] leading-7 text-slate">از شهرها، طبیعت یا ساحل؛ هر مقصد با برآورد هزینه و بهترین فصل سفر.</p>
+                <p class="mt-1 text-[13px] leading-7 text-slate">از شهرها، تاریخ یا ساحل؛ هر مقصد با برآورد هزینه و بهترین فصل سفر.</p>
+                
+                <!-- REAL PHOTOS: ISFAHAN & TRAVELER CHOOSING DESTINATION -->
+                <div class="mt-3.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+                  <div class="real-photo-card h-20 w-32 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/isfahan-naqsh-jahan.jpg" alt="میدان نقش جهان اصفهان" loading="lazy" />
+                    <div class="photo-overlay-dark flex items-end p-1.5 text-white">
+                      <span class="text-[10px] font-bold">اصفهان • مقصد تاریخی</span>
+                    </div>
+                  </div>
+                  <div class="real-photo-card h-20 w-20 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/traveler-map-street.jpg" alt="مسافر واقعی با نقشه در خیابان" loading="lazy" />
+                  </div>
+                  <p class="text-xs leading-6 text-slate">مقایسهٔ شهرهای تاریخی و تخمین بودجهٔ اقامت با همراهان.</p>
+                </div>
               </div>
             </li>
+
             <li data-step class="step-card" data-animate="fade-up" data-delay="0.06">
               <span class="step-num">۰۲</span>
-              <div>
+              <div class="flex-1">
                 <h3 class="text-[15px] font-extrabold text-ink">مسیرت را روی نقشه بچین</h3>
                 <p class="mt-1 text-[13px] leading-7 text-slate">مکان‌ها را اضافه کن و ببین خط سفر چطور بین‌شان کشیده می‌شود.</p>
+                
+                <!-- REAL PHOTOS: KASHAN & TRAVELER OVERLOOKING VIEW -->
+                <div class="mt-3.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+                  <div class="real-photo-card h-20 w-32 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/kashan-house.jpg" alt="خانه تاریخی بروجردی‌های کاشان" loading="lazy" />
+                    <div class="photo-overlay-dark flex items-end p-1.5 text-white">
+                      <span class="text-[10px] font-bold">کاشان • ایستگاه دوم</span>
+                    </div>
+                  </div>
+                  <div class="real-photo-card h-20 w-20 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/traveler-backpack-overlook.jpg" alt="مسافر با کوله‌پشتی بر بام شهر" loading="lazy" />
+                  </div>
+                  <p class="text-xs leading-6 text-slate">اتصال هوشمند نقاط دیدنی بین شهرها با کمترین زمان جابه‌جایی.</p>
+                </div>
               </div>
             </li>
+
             <li data-step class="step-card" data-animate="fade-up" data-delay="0.12">
               <span class="step-num">۰۳</span>
-              <div>
+              <div class="flex-1">
                 <h3 class="text-[15px] font-extrabold text-ink">روزها را کامل کن</h3>
                 <p class="mt-1 text-[13px] leading-7 text-slate">فعالیت‌ها را بکش و رها کن؛ ساعت‌ها، هزینه‌ها و آب‌وهوا هماهنگ می‌شوند.</p>
+                
+                <!-- REAL PHOTOS: SHIRAZ & TRAVEL FRIENDS GROUP -->
+                <div class="mt-3.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+                  <div class="real-photo-card h-20 w-32 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/shiraz-nasir.jpg" alt="شیراز دروازه قرآن و بافت تاریخی" loading="lazy" />
+                    <div class="photo-overlay-dark flex items-end p-1.5 text-white">
+                      <span class="text-[10px] font-bold">شیراز • فعالیت‌های روزانه</span>
+                    </div>
+                  </div>
+                  <div class="real-photo-card h-20 w-20 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/travelers-friends-cafe.jpg" alt="دوستان مسافر در حال هماهنگی روز" loading="lazy" />
+                  </div>
+                  <p class="text-xs leading-6 text-slate">تنظیم زمان بازدیدها، کافه‌گردی و وعده‌های غذایی گروهی.</p>
+                </div>
               </div>
             </li>
+
             <li data-step class="step-card" data-animate="fade-up" data-delay="0.18">
               <span class="step-num">۰۴</span>
-              <div>
+              <div class="flex-1">
                 <h3 class="text-[15px] font-extrabold text-ink">چمدان را ببند و پرواز کن</h3>
                 <p class="mt-1 text-[13px] leading-7 text-slate">چک‌لیست، یادداشت‌ها و بودجه تا لحظهٔ پرواز همراهت هستند.</p>
+                
+                <!-- REAL PHOTOS: TEHRAN & TRAVELER AT AIRPORT -->
+                <div class="mt-3.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+                  <div class="real-photo-card h-20 w-32 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/tehran-milad.jpg" alt="تهران مبدا آغاز پرواز" loading="lazy" />
+                    <div class="photo-overlay-dark flex items-end p-1.5 text-white">
+                      <span class="text-[10px] font-bold">تهران • فرودگاه خروج</span>
+                    </div>
+                  </div>
+                  <div class="real-photo-card h-20 w-20 shrink-0 shadow-xs">
+                    <img src="/src/assets/images/traveler-airport-boarding.jpg" alt="مسافر در سالن پرواز" loading="lazy" />
+                  </div>
+                  <p class="text-xs leading-6 text-slate">کارت پرواز دیجیتال، ووچرها و باربندی بدون استرس.</p>
+                </div>
               </div>
             </li>
           </ol>
 
-          <div class="journey-stage h-[420px] lg:h-[520px]" data-animate="scale-in">
+          <div class="journey-stage relative h-[460px] lg:h-[560px] rounded-2xl overflow-hidden border border-line" data-animate="scale-in">
             <svg class="absolute inset-0 h-full w-full opacity-50" viewBox="0 0 520 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <ellipse cx="130" cy="300" rx="90" ry="46" fill="#FFFFFF" opacity="0.5"/>
               <ellipse cx="420" cy="120" rx="80" ry="40" fill="#FFFFFF" opacity="0.45"/>
@@ -638,6 +929,22 @@
             <span data-stop class="stop-pin" style="left: 63.5%; top: 42.8%"><span class="stop-num">۲</span>کاشان</span>
             <span data-stop class="stop-pin" style="left: 40.4%; top: 63.8%"><span class="stop-num">۳</span>اصفهان</span>
             <span data-stop class="stop-pin" style="left: 18.5%; top: 88.6%"><span class="stop-num">۴</span>شیراز</span>
+
+            <!-- BOTTOM REAL TRAVELERS ROUTE CHIP -->
+            <div class="absolute bottom-4 inset-x-4 z-10 flex items-center justify-between rounded-xl bg-surface/90 p-3 shadow-md backdrop-blur-md border border-line">
+              <div class="flex items-center gap-2.5">
+                <div class="flex -space-x-2 space-x-reverse">
+                  <img src="/src/assets/images/traveler-avatar-1.jpg" alt="علی" class="h-7 w-7 rounded-full border-2 border-white object-cover shadow-xs" />
+                  <img src="/src/assets/images/traveler-avatar-2.jpg" alt="سارا" class="h-7 w-7 rounded-full border-2 border-white object-cover shadow-xs" />
+                  <img src="/src/assets/images/traveler-avatar-3.jpg" alt="نوید" class="h-7 w-7 rounded-full border-2 border-white object-cover shadow-xs" />
+                </div>
+                <div>
+                  <b class="block text-xs font-bold text-ink">مسیر ۴ روزهٔ تهران تا شیراز</b>
+                  <span class="text-[11px] text-slate">ثبت‌شده توسط مسافران واقعی Trip OS</span>
+                </div>
+              </div>
+              <span class="badge badge-success text-[11px]">پیمایش کامل ✓</span>
+            </div>
           </div>
         </div>
       </section>

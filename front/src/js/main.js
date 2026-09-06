@@ -11,7 +11,7 @@ import { copyText } from './utils/clipboard.js'
 import { initTooltips } from './components/tooltip.js'
 import { initNavbar } from './components/navbar.js'
 import { initWorldClocks } from './components/world-clock.js'
-import { initStyleGuide } from './pages/style-guide.js'
+import { initLivePreview } from './pages/live-preview.js'
 import { qs } from './utils/helpers.js'
 
 function boot() {
@@ -24,7 +24,7 @@ function boot() {
   initHero()
   revealAll()
   initTooltips()
-  initStyleGuide()
+  initLivePreview()
   initNavbar(qs('[data-navbar]'))
   initMarketing()
   initAccordions()
